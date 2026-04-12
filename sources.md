@@ -20,3 +20,4 @@ All processed URLs and their corresponding documents.
 | 2026-04-12 | Skill Graph Content Engine | [@DeRonin_](https://x.com/DeRonin_) | [skill-graph-content-engine.md](ai/knowledge-systems/skill-graph-content-engine.md) |
 | 2026-04-12 | AutoResearch: Autonomous AI Research Agents | [Karpathy](https://github.com/karpathy/autoresearch) | [karpathy-autoresearch-loop.md](ai/agents/karpathy-autoresearch-loop.md) |
 | 2026-04-12 | 🔑 Anthropic Claude Cookbooks | [Anthropic](https://github.com/anthropics/claude-cookbooks) | [anthropic-claude-cookbooks.md](reference/anthropic-claude-cookbooks.md) |
+| 2026-04-12 | Enterprise Agent Adoption Field Report | [Aaron Levie (Box)](https://x.com/levie) | [levie-enterprise-agent-adoption.md](ai/infrastructure/levie-enterprise-agent-adoption.md) |
