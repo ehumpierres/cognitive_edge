@@ -107,6 +107,15 @@
 
 **Build tools for both humans and LLMs.** Web UI + CLI. LLM becomes operator of your tooling.
 
+**Skill graphs: one file = tool, linked files = team.** A single .md file is a reference document. A folder of interconnected files with `[[wikilinks]]` creates emergent intelligence no single prompt can match. The connections ARE the intelligence.
+
+**Index as briefing, not table of contents.** The entry point (index.md, AGENTS.md) should be a command center: identity, node map with contextual annotations, execution instructions. Not a file list. Context inline with links saves tokens and enables faster decisions.
+
+**Inline context beats traversal.** Don't just link `[[x]]` — link `[[x]] — short-form, hook-driven, 280 chars max`. The extra context helps agents make decisions without opening every file.
+
+**Knowledge graphs evolve.** The skill graph isn't static. Update nodes based on what performs (hooks.md updated weekly). The system gets smarter because you're encoding lessons into the files themselves. Compound interest for knowledge.
+
+
 ### On Agentic Patterns
 
 **Parallel execution with coordination.** Agent Teams: lead agent + parallel teammates via shared task list. Lead agent IS the harness.
@@ -248,6 +257,9 @@
 - **Auth tokens in localStorage** (use httpOnly cookies)
 - **Sessions that never expire**
 - **No TypeScript on AI-generated code**
+- **Treating index files as tables of contents** (they're briefings with inline context)
+- **Hiring a genius with amnesia** (new chat, no context, every time)
+- **Reformatting instead of rethinking** (same content copy-pasted across platforms)
 
 ---
 
@@ -344,6 +356,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 | 2026-04-12 | Added knowledge systems beliefs from Karpathy's LLM knowledge base pattern. |
 | 2026-04-12 | Added task horizon, /loop patterns, Auto Mode, Agent Teams from Aakash's Claude Q1 feature analysis. |
 | 2026-04-12 | Added harness design + brain/hands decoupling from Anthropic engineering. |
+| 2026-04-12 | Added skill graph knowledge patterns: linked files = team, index as briefing, inline context, evolving graphs. |
 | 2026-04-12 | Initial creation. Added AI architecture beliefs from @rohit4verse insights. |
 
 ---
