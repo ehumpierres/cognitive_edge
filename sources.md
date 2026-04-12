@@ -4,6 +4,7 @@ All processed URLs and their corresponding documents.
 
 | Date | Title | Source | Document |
 |------|-------|--------|----------|
+| 2026-04-12 | Ramp Glass: AI Coworker for Every Employee | [Seb Goddijn (Ramp)](https://x.com/sebgoddijn) | [ramp-glass-ai-coworker.md](ai/infrastructure/ramp-glass-ai-coworker.md) |
 | 2026-04-12 | Harness Memory Ownership | Harrison Chase (LangChain) | [harness-memory-ownership.md](ai/agents/harness-memory-ownership.md) |
 | 2026-04-12 | Agent Economy Primitives | Industry compilation | [agent-economy-primitives.md](ai/infrastructure/agent-economy-primitives.md) |
 | 2026-04-12 | Agent Responsibly | [Vercel Engineering](https://vercel.com/blog/agent-responsibly) | [agent-responsibly-vercel.md](deployment/agent-responsibly-vercel.md) |
