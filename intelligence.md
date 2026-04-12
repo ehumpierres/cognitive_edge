@@ -20,6 +20,8 @@
 
 **GenAI is not Agentic AI.** Base LLMs are reactive and stateless. Agents are proactive and tool-equipped. Agentic systems are collaborative ecosystems. Know what you're building.
 
+**The models are good enough, the harness isn't.** Most people use AI like driving a Ferrari with the handbrake on — not because they lack ambition, but because they've never seen what a well-configured environment can do. Configuration is the bottleneck, not capability.
+
 **Harnesses are not going away.** Old scaffolding becomes unnecessary, but new scaffolding replaces it. Claude Code has 512k lines of harness code. Even "built-in" features (web search in APIs) are lightweight harnesses behind the API. Design for harness evolution, not harness elimination.
 
 **Virtualize agent components.** Like OS abstractions (process, file) outlasted hardware, agent interfaces should outlast implementations. Three components: session (event log), harness (orchestration loop), sandbox (execution). Each independently replaceable.
@@ -56,6 +58,26 @@
 **Memory creates lock-in that models don't.** Without memory, agents are replicable by anyone with the same tools. With memory, you build a proprietary dataset. Model providers are incentivized to lock memory behind APIs for exactly this reason.
 
 **Open harnesses for enterprise.** Requirements: open source, model agnostic, open standards (agents.md, skills), pluggable storage (Postgres, Mongo, Redis), self-hostable, bring your own database.
+
+**Build memory from connections.** Don't require users to re-explain their world. Build context automatically from authenticated tools (Slack, Calendar, Notion, etc.). Run synthesis pipelines to keep memory fresh without user effort.
+
+### On Enterprise Adoption
+
+**Internal AI productivity is a moat.** Using AI well is now a core business need. The companies that make every employee effective with AI will compound advantages competitors cannot match. You do not hand your moat to a vendor.
+
+**Raise the floor, don't lower the ceiling.** The default approach for non-technical users is to simplify — put on rails, fewer options, dummy-proof. Wrong. The goal isn't to remove complexity, but to make it invisible while preserving full capability.
+
+**One person's breakthrough becomes everyone's baseline.** The biggest failure mode: everyone has to figure things out alone. A workflow discovered by one person doesn't help anyone else. Skills must compound into organizational capability.
+
+**The product is the enablement.** People who got the most value weren't those who attended training sessions — they were those who installed a skill on day one and immediately got a result. The product taught faster than training ever could. Every feature is secretly a lesson.
+
+**Pre-connect everything on day one.** SSO sign-in → all tools available with one click. Sales rep asks to pull Gong + enrich with Salesforce + draft follow-up: it just works. This unsexy foundation makes everything else possible.
+
+**Skill marketplaces with AI-guided discovery.** Don't make people browse catalogs of 350+ skills. AI "Sensei" looks at connected tools, role, recent work, and surfaces the 5 skills that matter most right now.
+
+**Laptop as server.** Scheduled automations (daily, weekly, cron), Slack-native assistants, headless mode for long tasks. Kick off work, walk away, approve from phone, results waiting when you return.
+
+**Workspace > chat.** Real work isn't linear. Split panes, multiple sessions, documents alongside conversations. Layout persists across sessions.
 
 ### On Agent Economy
 
@@ -133,16 +155,18 @@
 | Harness | Open, model-agnostic | Own your memory; avoid API lock-in |
 | Sandbox | Daytona, E2B | Cattle execution environments for agents |
 | Browser | Browserbase, Browser Use | Agent-native browser control |
-| Memory | Self-hosted (Postgres/Mongo/Redis) | Own your data; pluggable storage |
+| Memory | Self-hosted + auto-synthesis | Own data; build from connections; 24h refresh |
+| Skills | Marketplace + AI discovery | One person's breakthrough = everyone's baseline |
 | Deployment | Self-driving pipelines | Gated rollouts, auto-rollback, continuous validation |
 | Guardrails | Executable skills | Runnable tools > documentation |
 | Knowledge Store | Markdown wiki | LLM-maintained, human-readable, version-controlled |
 | Knowledge IDE | Obsidian | View raw + compiled + outputs in one place |
 | Orchestration | LangGraph | State machines + persistence + human-in-loop |
-| Tool Integration | Composio, MCP Connectors | Agent-native SaaS access |
+| Tool Integration | SSO + pre-connected | Day one everything works |
 | Search | Exa | Agent-optimized web search (not Google) |
 | Multi-Agent | Agent Teams pattern | Lead agent + parallel teammates + shared task list |
 | Permission Handling | Auto Mode | Two-check safety without click fatigue |
+| Interface | Workspace (split panes) | Real work isn't linear |
 
 ---
 
@@ -173,10 +197,15 @@
 - Using same agents for generation and verification
 - Building custom integrations when primitives exist
 - Using human-oriented UX/search for agent workflows
-- **Ceding memory to closed harnesses or provider APIs**
-- **Using stateful provider APIs when portability matters**
-- **Treating memory as separate from harness (it's not)**
-- **Encrypted/proprietary formats in "open" tools (e.g., Codex compaction)**
+- Ceding memory to closed harnesses or provider APIs
+- Using stateful provider APIs when portability matters
+- Treating memory as separate from harness (it's not)
+- Encrypted/proprietary formats in "open" tools (e.g., Codex compaction)
+- **Lowering the ceiling instead of raising the floor**
+- **Training sessions instead of product-as-enablement**
+- **Making people browse skill catalogs instead of AI-guided discovery**
+- **Requiring users to re-explain their world (vs. building memory from connections)**
+- **Chat windows instead of workspaces**
 
 ---
 
@@ -220,6 +249,10 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 - **Resolved:** Open harnesses with pluggable storage (Postgres/Mongo/Redis), model-agnostic, self-hostable
 - **Key insight:** Memory isn't a plugin — it's the harness. Own your harness = own your memory.
 
+### ~~Enterprise Rollout Pattern~~ ✅
+- **Resolved:** Ramp Glass pattern — SSO + pre-connected integrations, skill marketplace with AI discovery, memory from connections, workspace interface.
+- **Key insight:** Product is the enablement. Raise the floor, don't lower the ceiling.
+
 ---
 
 ## Open Questions
@@ -229,6 +262,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 - ~~Optimal harness design for different task types?~~ → Virtualize components, make harness stateless
 - ~~How to balance Auto Mode safety with necessary human oversight?~~ → Self-driving deployments + executable guardrails
 - ~~How to maintain data portability across providers?~~ → Open harnesses, own your memory, pluggable storage
+- ~~How to roll out AI tools to non-technical users?~~ → Pre-connect everything, skill marketplace, AI-guided discovery, product = enablement
 
 ### Architecture & Patterns
 - Best practices for multi-agent communication protocols?
@@ -255,6 +289,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added enterprise adoption beliefs from Ramp Glass: raise floor not lower ceiling, product = enablement, skill marketplace, memory from connections, workspace > chat. Resolved enterprise rollout gap. |
 | 2026-04-12 | Added memory ownership beliefs from Harrison Chase: memory is the harness, open harnesses for enterprise, lock-in levels. Resolved data portability gap. |
 | 2026-04-12 | Added enterprise readiness gaps: traceability, validation, compliance, trust models, determinism, security. Flagged as priority hunt. |
 | 2026-04-12 | Added agent economy primitives: agents as primary users, primitive categories (communication, compute, memory, action). |
