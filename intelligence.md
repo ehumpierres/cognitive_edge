@@ -20,36 +20,50 @@
 
 **GenAI is not Agentic AI.** Base LLMs are reactive and stateless. Agents are proactive and tool-equipped. Agentic systems are collaborative ecosystems. Know what you're building.
 
-**Harnesses enable long-running agents.** The key to autonomous work isn't just smarter models—it's the infrastructure (harness) that supports persistent, multi-turn agent execution. Anthropic validates this internally.
+**Harnesses encode stale assumptions.** Every harness workaround is a bet that the model can't do X. Models improve; workarounds become dead weight. Design for harness evolution.
 
-**Decouple brain from hands.** Separate reasoning from execution in managed agent architectures. The "brain" plans and decides; the "hands" execute. This enables better scaling and debugging.
+**Virtualize agent components.** Like OS abstractions (process, file) outlasted hardware, agent interfaces should outlast implementations. Three components: session (event log), harness (orchestration loop), sandbox (execution). Each independently replaceable.
 
-**Task horizon is infrastructure.** Model capability isn't just benchmarks—it's durability. Opus 4.6's 14-hour task horizon isn't a feature; it's infrastructure that makes /loop, Agent Teams, and Dispatch viable. A model that drifts after 2 hours can't run overnight workflows.
+**Task horizon is infrastructure.** Model capability isn't just benchmarks—it's durability. Opus 4.6's 14-hour task horizon isn't a feature; it's infrastructure that makes /loop, Agent Teams, and Dispatch viable.
 
-**Friction kills agentic work.** The bottleneck isn't capability—it's interruption. Auto Mode (permission-by-policy) removes the interrupt tax. Every "Allow" click breaks flow.
+**Friction kills agentic work.** The bottleneck isn't capability—it's interruption. Auto Mode (permission-by-policy) removes the interrupt tax.
+
+### On Agent Infrastructure
+
+**Decouple brain from hands.** Brain = Claude + harness. Hands = sandboxes + tools. Universal interface: `execute(name, input) → string`. The harness doesn't know if the sandbox is a container, phone, or Pokémon emulator.
+
+**Cattle, not pets.** Never couple all components into one container. Pet = named, hand-tended, can't afford to lose. Cattle = interchangeable, replaceable. Container dies? Catch the error, spin up a new one.
+
+**Session ≠ context window.** Context window decisions (compaction, trimming) are irreversible. Session log is durable, append-only, queryable via `getEvents()`. Store everything; transform in harness before passing to Claude.
+
+**Credentials never in sandbox.** Untrusted code + accessible credentials = prompt injection wins. Clone repos with tokens at init, wire into remotes. MCP tokens in vault, fetched by proxy. Harness never sees credentials.
+
+**Provision lazily.** Don't pay container setup cost until you need a container. Inference can start from session log immediately. TTFT drops 60-90% with lazy provisioning.
+
+**Many brains, many hands.** Decoupling enables horizontal scale. Stateless harnesses connect to sandboxes only when needed. Brains can pass hands to one another.
 
 ### On Knowledge Systems
 
-**LLMs compile knowledge, not just retrieve it.** Structure data as `raw/` (sources) → `wiki/` (compiled). The LLM transforms unstructured sources into interlinked, categorized knowledge. Human role: curate inputs, ask questions. LLM role: compile, maintain, enhance.
+**LLMs compile knowledge, not just retrieve it.** Structure data as `raw/` (sources) → `wiki/` (compiled). Human curates inputs + asks questions. LLM compiles, maintains, enhances.
 
-**RAG is scale infrastructure, not a requirement.** At small scale (~100 articles, ~400K words), auto-maintained indexes beat vector search. LLMs are good at maintaining their own summaries and finding relevant context. Start simple.
+**RAG is scale infrastructure, not a requirement.** At ~400K words, auto-maintained indexes beat vector search. Start simple.
 
-**Queries should add up.** File query outputs back into the knowledge base. Every exploration becomes a wiki enhancement. Knowledge compounds.
+**Queries should add up.** File outputs back into wiki. Knowledge compounds.
 
-**LLM linting keeps data healthy.** Run periodic "health checks" to find inconsistencies, impute missing data, discover connections, suggest new articles. The wiki is never static.
+**LLM linting keeps data healthy.** Periodic health checks for inconsistencies, missing data, connections, new articles.
 
-**Build tools for both humans and LLMs.** Good tools have a human interface (web UI) AND an LLM interface (CLI). The LLM becomes an operator of your tooling.
+**Build tools for both humans and LLMs.** Web UI + CLI. LLM becomes operator of your tooling.
 
 ### On Agentic Patterns
 
-**Parallel execution with coordination.** Agent Teams demonstrates the pattern: a lead agent delegates to parallel teammates via shared task list. The lead agent IS the harness.
+**Parallel execution with coordination.** Agent Teams: lead agent + parallel teammates via shared task list. Lead agent IS the harness.
 
-**Scheduled persistence via /loop.** Long-running agents need repeating intervals, not one-shot runs. Patterns that work:
-- `/loop 5m /babysit` — auto-address code review comments
+**Scheduled persistence via /loop.** Long-running agents need repeating intervals:
+- `/loop 5m /babysit` — code review comments
 - `/loop 30m /slack-feedback` — PRs for feedback
 - `/loop 1h /pr-pruner` — close stale PRs
 
-**Connectors abstract MCP.** One-click integrations (50+) mean agents can access real workflows (Figma, Slack, Notion) without MCP boilerplate.
+**Connectors abstract MCP.** 50+ one-click integrations without boilerplate.
 
 ### On Building
 
@@ -70,12 +84,14 @@
 | Layer | Best-in-Class | Why |
 |-------|---------------|-----|
 | Model (Long Tasks) | Opus 4.6 | 14-hour task horizon enables persistent agents |
+| Session | Append-only event log | Durable, queryable, survives harness crashes |
+| Harness | Stateless orchestrator | Restartable via wake(sessionId), no state to lose |
+| Sandbox | Cattle containers | execute(name, input) → string, independently replaceable |
 | Knowledge Store | Markdown wiki | LLM-maintained, human-readable, version-controlled |
 | Knowledge IDE | Obsidian | View raw + compiled + outputs in one place |
 | Orchestration | LangGraph | State machines + persistence + human-in-loop |
 | Execution | LangChain | Mature tooling, wide integrations |
 | Multi-Agent | Agent Teams pattern | Lead agent + parallel teammates + shared task list |
-| Long-Running | Harness + /loop | Anthropic-validated pattern for persistence |
 | Permission Handling | Auto Mode | Two-check safety without click fatigue |
 | Integrations | MCP Connectors | 50+ pre-built, no boilerplate |
 
@@ -95,15 +111,20 @@
 - Manually editing LLM-maintained wikis
 - Treating knowledge bases as static (no linting/enhancement)
 - Building tools for only humans OR only LLMs, not both
+- **Coupling harness + sandbox in one container (creates pets)**
+- **Credentials accessible from untrusted code execution**
+- **Context window as only memory (irreversible losses)**
+- **Assuming resources live alongside harness**
+- **Provisioning containers before they're needed**
 
 ---
 
 ## Open Questions
 
-- How to handle state across long-running agent sessions?
+- ~~How to handle state across long-running agent sessions?~~ → Session log with getEvents()
 - Best practices for multi-agent communication protocols?
 - When to use single agents vs multi-agent systems?
-- Optimal harness design for different task types?
+- ~~Optimal harness design for different task types?~~ → Virtualize components, make harness stateless
 - When is /loop preferable to event-driven triggers?
 - How to balance Auto Mode safety with necessary human oversight?
 - At what scale does RAG become necessary over auto-maintained indexes?
@@ -115,6 +136,7 @@
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added Managed Agents architecture: virtualization, cattle not pets, session model, credential isolation, lazy provisioning. |
 | 2026-04-12 | Added knowledge systems beliefs from Karpathy's LLM knowledge base pattern. |
 | 2026-04-12 | Added task horizon, /loop patterns, Auto Mode, Agent Teams from Aakash's Claude Q1 feature analysis. |
 | 2026-04-12 | Added harness design + brain/hands decoupling from Anthropic engineering. |
