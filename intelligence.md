@@ -20,7 +20,7 @@
 
 **GenAI is not Agentic AI.** Base LLMs are reactive and stateless. Agents are proactive and tool-equipped. Agentic systems are collaborative ecosystems. Know what you're building.
 
-**Harnesses encode stale assumptions.** Every harness workaround is a bet that the model can't do X. Models improve; workarounds become dead weight. Design for harness evolution.
+**Harnesses are not going away.** Old scaffolding becomes unnecessary, but new scaffolding replaces it. Claude Code has 512k lines of harness code. Even "built-in" features (web search in APIs) are lightweight harnesses behind the API. Design for harness evolution, not harness elimination.
 
 **Virtualize agent components.** Like OS abstractions (process, file) outlasted hardware, agent interfaces should outlast implementations. Three components: session (event log), harness (orchestration loop), sandbox (execution). Each independently replaceable.
 
@@ -41,6 +41,21 @@
 **Provision lazily.** Don't pay container setup cost until you need a container. Inference can start from session log immediately. TTFT drops 60-90% with lazy provisioning.
 
 **Many brains, many hands.** Decoupling enables horizontal scale. Stateless harnesses connect to sandboxes only when needed. Brains can pass hands to one another.
+
+### On Memory & Ownership
+
+**Memory isn't a plugin — it's the harness.** Managing context IS managing memory. The harness decides: how is AGENTS.md loaded? What survives compaction? Are interactions queryable? How is memory metadata presented? You can't separate memory from harness.
+
+**If you don't own your harness, you don't own your memory.** Closed harnesses (especially behind APIs) mean you cede control of agent memory to a third party. Memory is what makes agents sticky and differentiated. Don't give that away.
+
+**Levels of lock-in:**
+- **Mild:** Stateful APIs (OpenAI Responses, Anthropic server-side compaction) — can't swap models and resume threads
+- **Bad:** Closed harness (Claude Agent SDK) — memory format unknown, non-transferable
+- **Worst:** Entire harness + long-term memory behind API — zero ownership or visibility
+
+**Memory creates lock-in that models don't.** Without memory, agents are replicable by anyone with the same tools. With memory, you build a proprietary dataset. Model providers are incentivized to lock memory behind APIs for exactly this reason.
+
+**Open harnesses for enterprise.** Requirements: open source, model agnostic, open standards (agents.md, skills), pluggable storage (Postgres, Mongo, Redis), self-hostable, bring your own database.
 
 ### On Agent Economy
 
@@ -115,10 +130,10 @@
 |-------|---------------|-----|
 | Model (Long Tasks) | Opus 4.6 | 14-hour task horizon enables persistent agents |
 | Session | Append-only event log | Durable, queryable, survives harness crashes |
-| Harness | Stateless orchestrator | Restartable via wake(sessionId), no state to lose |
+| Harness | Open, model-agnostic | Own your memory; avoid API lock-in |
 | Sandbox | Daytona, E2B | Cattle execution environments for agents |
 | Browser | Browserbase, Browser Use | Agent-native browser control |
-| Memory | Mem0 | Persistent agent memory across sessions |
+| Memory | Self-hosted (Postgres/Mongo/Redis) | Own your data; pluggable storage |
 | Deployment | Self-driving pipelines | Gated rollouts, auto-rollback, continuous validation |
 | Guardrails | Executable skills | Runnable tools > documentation |
 | Knowledge Store | Markdown wiki | LLM-maintained, human-readable, version-controlled |
@@ -158,6 +173,10 @@
 - Using same agents for generation and verification
 - Building custom integrations when primitives exist
 - Using human-oriented UX/search for agent workflows
+- **Ceding memory to closed harnesses or provider APIs**
+- **Using stateful provider APIs when portability matters**
+- **Treating memory as separate from harness (it's not)**
+- **Encrypted/proprietary formats in "open" tools (e.g., Codex compaction)**
 
 ---
 
@@ -197,6 +216,10 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 - **What we have:** Credential isolation (Anthropic), brain/hands separation prevents prompt injection escalation
 - **What we're missing:** Threat modeling for agentic systems, adversarial robustness, data exfiltration prevention
 
+### ~~Data Portability & Ownership~~ ✅
+- **Resolved:** Open harnesses with pluggable storage (Postgres/Mongo/Redis), model-agnostic, self-hostable
+- **Key insight:** Memory isn't a plugin — it's the harness. Own your harness = own your memory.
+
 ---
 
 ## Open Questions
@@ -205,6 +228,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 - ~~How to handle state across long-running agent sessions?~~ → Session log with getEvents()
 - ~~Optimal harness design for different task types?~~ → Virtualize components, make harness stateless
 - ~~How to balance Auto Mode safety with necessary human oversight?~~ → Self-driving deployments + executable guardrails
+- ~~How to maintain data portability across providers?~~ → Open harnesses, own your memory, pluggable storage
 
 ### Architecture & Patterns
 - Best practices for multi-agent communication protocols?
@@ -231,6 +255,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added memory ownership beliefs from Harrison Chase: memory is the harness, open harnesses for enterprise, lock-in levels. Resolved data portability gap. |
 | 2026-04-12 | Added enterprise readiness gaps: traceability, validation, compliance, trust models, determinism, security. Flagged as priority hunt. |
 | 2026-04-12 | Added agent economy primitives: agents as primary users, primitive categories (communication, compute, memory, action). |
 | 2026-04-12 | Added deployment beliefs from Vercel: green CI ≠ safety, leverage vs rely, self-driving deployments, executable guardrails, verification agents. |
