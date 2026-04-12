@@ -118,6 +118,22 @@
 
 **Connectors abstract MCP.** 50+ one-click integrations without boilerplate.
 
+### On Agent Configuration
+
+**CLAUDE.md < 200 lines.** Instruction adherence drops with length. Keep it focused: commands, architecture, conventions, gotchas. Don't duplicate what linters already enforce.
+
+**Instructions are suggestions; hooks are deterministic.** CLAUDE.md tells Claude what to do. Hooks MAKE it happen — shell scripts that fire at PreToolUse, PostToolUse, Stop, etc. Use hooks for security gates and quality gates.
+
+**Exit code 2 blocks, exit code 1 doesn't.** Common mistake: using exit 1 for security hooks. Exit 1 = error but non-blocking. Exit 2 = stop everything. Know the difference.
+
+**Path-scoped rules.** Don't load API conventions when editing React components. Use rules/ folder with YAML frontmatter `paths:` to scope instructions to relevant files.
+
+**Skills are packages, commands are files.** Skills can bundle supporting files (@DETAILED_GUIDE.md). Commands are single markdown files. Use skills when workflows need reference material.
+
+**Two-level config: project + personal.** Project `.claude/` is committed (team-wide). `~/.claude/` is personal (global preferences, auto-memory). CLAUDE.local.md and settings.local.json are gitignored for personal overrides.
+
+**Restrict agent tools explicitly.** A security auditor agent doesn't need Write access. Define `tools: Read, Grep, Glob` in agent markdown frontmatter.
+
 ### On Deployment
 
 **Green CI ≠ proof of safety.** Passing CI is the agent's ability to persuade your pipeline, not proof the change is safe at scale. A query that scans every row, retry logic that thundering-herds, a cache with no TTL—all pass tests.
@@ -289,6 +305,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added agent configuration beliefs from .claude/ folder anatomy: CLAUDE.md < 200 lines, hooks vs instructions, exit codes, path-scoped rules, skills vs commands. |
 | 2026-04-12 | Added enterprise adoption beliefs from Ramp Glass: raise floor not lower ceiling, product = enablement, skill marketplace, memory from connections, workspace > chat. Resolved enterprise rollout gap. |
 | 2026-04-12 | Added memory ownership beliefs from Harrison Chase: memory is the harness, open harnesses for enterprise, lock-in levels. Resolved data portability gap. |
 | 2026-04-12 | Added enterprise readiness gaps: traceability, validation, compliance, trust models, determinism, security. Flagged as priority hunt. |
