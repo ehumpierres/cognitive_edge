@@ -42,6 +42,22 @@
 
 **Many brains, many hands.** Decoupling enables horizontal scale. Stateless harnesses connect to sandboxes only when needed. Brains can pass hands to one another.
 
+### On Agent Economy
+
+**Agents are becoming primary users.** The economy is being rebuilt with AI agents as the primary users, not humans. Every capability humans use to operate digitally needs an agent-native equivalent.
+
+**Human UX doesn't work for agents.** Web forms, OAuth flows, visual interfaces — all optimized for humans. Agents need programmatic, structured APIs. Google doesn't work for agents.
+
+**The primitives stack:**
+- **Communication:** Email (AgentMail), Phone (AgentPhone), WhatsApp (Kapso), Voice (ElevenLabs, Vapi)
+- **Compute:** Sandboxes (Daytona, E2B), Browsers (Browserbase, Browser Use), Web crawling (Firecrawl)
+- **Memory:** Persistent memory (Mem0), Web search (Exa), People/company search (Sixtyfour)
+- **Action:** Tool orchestration (Composio), API access (Orthogonal), Payments (Kite, Sponge)
+
+**Compose primitives, don't build custom.** When building agents, stitch together existing primitives rather than building custom integrations for each capability.
+
+**Payment unlocks autonomy.** Agents that can pay for things (Kite, Sponge) become economically autonomous. This is a phase shift in agent capability.
+
 ### On Knowledge Systems
 
 **LLMs compile knowledge, not just retrieve it.** Structure data as `raw/` (sources) → `wiki/` (compiled). Human curates inputs + asks questions. LLM compiles, maintains, enhances.
@@ -100,16 +116,18 @@
 | Model (Long Tasks) | Opus 4.6 | 14-hour task horizon enables persistent agents |
 | Session | Append-only event log | Durable, queryable, survives harness crashes |
 | Harness | Stateless orchestrator | Restartable via wake(sessionId), no state to lose |
-| Sandbox | Cattle containers | execute(name, input) → string, independently replaceable |
+| Sandbox | Daytona, E2B | Cattle execution environments for agents |
+| Browser | Browserbase, Browser Use | Agent-native browser control |
+| Memory | Mem0 | Persistent agent memory across sessions |
 | Deployment | Self-driving pipelines | Gated rollouts, auto-rollback, continuous validation |
 | Guardrails | Executable skills | Runnable tools > documentation |
 | Knowledge Store | Markdown wiki | LLM-maintained, human-readable, version-controlled |
 | Knowledge IDE | Obsidian | View raw + compiled + outputs in one place |
 | Orchestration | LangGraph | State machines + persistence + human-in-loop |
-| Execution | LangChain | Mature tooling, wide integrations |
+| Tool Integration | Composio, MCP Connectors | Agent-native SaaS access |
+| Search | Exa | Agent-optimized web search (not Google) |
 | Multi-Agent | Agent Teams pattern | Lead agent + parallel teammates + shared task list |
 | Permission Handling | Auto Mode | Two-check safety without click fatigue |
-| Integrations | MCP Connectors | 50+ pre-built, no boilerplate |
 
 ---
 
@@ -132,12 +150,14 @@
 - Context window as only memory (irreversible losses)
 - Assuming resources live alongside harness
 - Provisioning containers before they're needed
-- **Assuming agent + passing tests = ready to ship**
-- **Shipping PRs you can't explain the production impact of**
-- **Operational knowledge trapped in documentation**
-- **Manual dashboard babysitting for deployments**
-- **Testing only at deploy time**
-- **Using same agents for generation and verification**
+- Assuming agent + passing tests = ready to ship
+- Shipping PRs you can't explain the production impact of
+- Operational knowledge trapped in documentation
+- Manual dashboard babysitting for deployments
+- Testing only at deploy time
+- Using same agents for generation and verification
+- **Building custom integrations when primitives exist**
+- **Using human-oriented UX/search for agent workflows**
 
 ---
 
@@ -151,6 +171,8 @@
 - ~~How to balance Auto Mode safety with necessary human oversight?~~ → Self-driving deployments + executable guardrails
 - At what scale does RAG become necessary over auto-maintained indexes?
 - When to move knowledge from context windows to fine-tuned weights?
+- Which agent primitives will commoditize vs. differentiate?
+- How do payment-enabled agents change trust models?
 
 ---
 
@@ -158,6 +180,7 @@
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added agent economy primitives: agents as primary users, primitive categories (communication, compute, memory, action). |
 | 2026-04-12 | Added deployment beliefs from Vercel: green CI ≠ safety, leverage vs rely, self-driving deployments, executable guardrails, verification agents. |
 | 2026-04-12 | Added Managed Agents architecture: virtualization, cattle not pets, session model, credential isolation, lazy provisioning. |
 | 2026-04-12 | Added knowledge systems beliefs from Karpathy's LLM knowledge base pattern. |
