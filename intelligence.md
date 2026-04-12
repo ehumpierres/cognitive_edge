@@ -152,6 +152,8 @@
 
 **Separate generative from verification agents.** Read-only agents continuously verify system invariants. Specialized agents audit assumptions made by generative agents. Different agents for doing vs. checking.
 
+**AI optimizes for "works" not "works safely."** Vibe-coded apps compile and pass tests but ship without: rate limiting, input sanitization, session expiry, database indexing, connection pooling, CORS, logging, health checks, backups. These are opt-in — AI won't include them unless you ask. Make production requirements explicit in CLAUDE.md.
+
 ### On Building
 
 *[To be developed as more insights are collected]*
@@ -222,6 +224,10 @@
 - **Making people browse skill catalogs instead of AI-guided discovery**
 - **Requiring users to re-explain their world (vs. building memory from connections)**
 - **Chat windows instead of workspaces**
+- **Shipping vibe-coded apps without security checklist** (rate limiting, auth, indexing, logging, backups)
+- **Auth tokens in localStorage** (use httpOnly cookies)
+- **Sessions that never expire**
+- **No TypeScript on AI-generated code**
 
 ---
 
@@ -305,6 +311,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added vibe-coding security checklist: 20 ways AI-generated apps fail in production. AI optimizes for "works" not "works safely." |
 | 2026-04-12 | Added agent configuration beliefs from .claude/ folder anatomy: CLAUDE.md < 200 lines, hooks vs instructions, exit codes, path-scoped rules, skills vs commands. |
 | 2026-04-12 | Added enterprise adoption beliefs from Ramp Glass: raise floor not lower ceiling, product = enablement, skill marketplace, memory from connections, workspace > chat. Resolved enterprise rollout gap. |
 | 2026-04-12 | Added memory ownership beliefs from Harrison Chase: memory is the harness, open harnesses for enterprise, lock-in levels. Resolved data portability gap. |
