@@ -19,3 +19,4 @@ All processed URLs and their corresponding documents.
 | 2026-04-12 | The 4 Layers of the AI Agent Stack | [@rohit4verse](https://x.com/rohit4verse) | [hybrid-ai-stack-architecture.md](ai/agents/hybrid-ai-stack-architecture.md) |
 | 2026-04-12 | Skill Graph Content Engine | [@DeRonin_](https://x.com/DeRonin_) | [skill-graph-content-engine.md](ai/knowledge-systems/skill-graph-content-engine.md) |
 | 2026-04-12 | AutoResearch: Autonomous AI Research Agents | [Karpathy](https://github.com/karpathy/autoresearch) | [karpathy-autoresearch-loop.md](ai/agents/karpathy-autoresearch-loop.md) |
+| 2026-04-12 | 🔑 Anthropic Claude Cookbooks | [Anthropic](https://github.com/anthropics/claude-cookbooks) | [anthropic-claude-cookbooks.md](reference/anthropic-claude-cookbooks.md) |
