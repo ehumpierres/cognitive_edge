@@ -4,6 +4,7 @@ All processed URLs and their corresponding documents.
 
 | Date | Title | Source | Document |
 |------|-------|--------|----------|
+| 2026-04-12 | Agent Responsibly | [Vercel Engineering](https://vercel.com/blog/agent-responsibly) | [agent-responsibly-vercel.md](deployment/agent-responsibly-vercel.md) |
 | 2026-04-12 | Managed Agents: Decoupling Brain from Hands | [Anthropic Engineering](https://www.anthropic.com/engineering/managed-agents) | [anthropic-managed-agents-architecture.md](ai/agents/anthropic-managed-agents-architecture.md) |
 | 2026-04-12 | LLM Knowledge Bases | Andrej Karpathy | [karpathy-llm-knowledge-bases.md](ai/knowledge-systems/karpathy-llm-knowledge-bases.md) |
 | 2026-04-12 | Claude Q1 2026 Feature Tiers | [AI by Aakash](https://www.aibyaakash.com/p/claude-features-ranked-q1-2026) | [claude-q1-2026-feature-tiers.md](ai/agents/claude-q1-2026-feature-tiers.md) |
