@@ -156,23 +156,74 @@
 - Manual dashboard babysitting for deployments
 - Testing only at deploy time
 - Using same agents for generation and verification
-- **Building custom integrations when primitives exist**
-- **Using human-oriented UX/search for agent workflows**
+- Building custom integrations when primitives exist
+- Using human-oriented UX/search for agent workflows
+
+---
+
+## Gaps: Enterprise Readiness 🚨
+
+*Critical areas where we lack authoritative sources. Actively hunting for content.*
+
+Enterprise adoption of agentic systems requires capabilities we don't yet have strong opinions on:
+
+### Calculation Traceability
+- **The problem:** How do you audit *what* an agent computed and *why*?
+- **What we need:** Chain of reasoning, intermediate steps, decision justification
+- **Partial coverage:** Anthropic's session log is append-only and durable — infrastructure exists, but no stance on *how* to build auditable agent outputs
+- **Related:** Extended thinking / reasoning traces may help, but need enterprise patterns
+
+### Output Validation
+- **The problem:** Beyond "tests pass" — how do you verify correctness for business logic?
+- **What we need:** Validation frameworks for agent-generated calculations, decisions, recommendations
+- **Partial coverage:** Vercel's verification agents are a start, but focused on system invariants not business correctness
+
+### Compliance & Auditability
+- **The problem:** SOC2, audit trails, regulatory requirements for agent actions
+- **What we need:** Patterns for logging, retention, access control, audit response
+- **Current coverage:** None
+
+### Enterprise Trust Models
+- **The problem:** Who approved this action? What's the approval chain for autonomous agents?
+- **What we need:** Approval workflows, delegation policies, human-in-loop patterns for high-stakes decisions
+- **Partial coverage:** Auto Mode has two-check safety, but no enterprise governance patterns
+
+### Determinism & Reproducibility
+- **The problem:** Can you replay an agent's work and get the same result?
+- **What we need:** Patterns for reproducible agent execution, seed management, version pinning
+- **Current coverage:** None
+
+### Security Posture
+- **What we have:** Credential isolation (Anthropic), brain/hands separation prevents prompt injection escalation
+- **What we're missing:** Threat modeling for agentic systems, adversarial robustness, data exfiltration prevention
 
 ---
 
 ## Open Questions
 
+### Resolved
 - ~~How to handle state across long-running agent sessions?~~ → Session log with getEvents()
+- ~~Optimal harness design for different task types?~~ → Virtualize components, make harness stateless
+- ~~How to balance Auto Mode safety with necessary human oversight?~~ → Self-driving deployments + executable guardrails
+
+### Architecture & Patterns
 - Best practices for multi-agent communication protocols?
 - When to use single agents vs multi-agent systems?
-- ~~Optimal harness design for different task types?~~ → Virtualize components, make harness stateless
 - When is /loop preferable to event-driven triggers?
-- ~~How to balance Auto Mode safety with necessary human oversight?~~ → Self-driving deployments + executable guardrails
 - At what scale does RAG become necessary over auto-maintained indexes?
 - When to move knowledge from context windows to fine-tuned weights?
+
+### Agent Economy
 - Which agent primitives will commoditize vs. differentiate?
 - How do payment-enabled agents change trust models?
+
+### Enterprise Readiness (Priority Hunt)
+- How to implement calculation traceability for auditable agent outputs?
+- What validation frameworks exist for agent-generated business logic?
+- Patterns for SOC2/compliance-ready agent architectures?
+- Enterprise governance models for autonomous agent approval chains?
+- How to achieve deterministic/reproducible agent execution?
+- Threat models and security frameworks specific to agentic systems?
 
 ---
 
@@ -180,6 +231,7 @@
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added enterprise readiness gaps: traceability, validation, compliance, trust models, determinism, security. Flagged as priority hunt. |
 | 2026-04-12 | Added agent economy primitives: agents as primary users, primitive categories (communication, compute, memory, action). |
 | 2026-04-12 | Added deployment beliefs from Vercel: green CI ≠ safety, leverage vs rely, self-driving deployments, executable guardrails, verification agents. |
 | 2026-04-12 | Added Managed Agents architecture: virtualization, cattle not pets, session model, credential isolation, lazy provisioning. |
