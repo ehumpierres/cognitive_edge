@@ -20,6 +20,10 @@
 
 **GenAI is not Agentic AI.** Base LLMs are reactive and stateless. Agents are proactive and tool-equipped. Agentic systems are collaborative ecosystems. Know what you're building.
 
+**Harnesses enable long-running agents.** The key to autonomous work isn't just smarter models—it's the infrastructure (harness) that supports persistent, multi-turn agent execution. Anthropic validates this internally.
+
+**Decouple brain from hands.** Separate reasoning from execution in managed agent architectures. The "brain" plans and decides; the "hands" execute. This enables better scaling and debugging.
+
 ### On Building
 
 *[To be developed as more insights are collected]*
@@ -41,6 +45,7 @@
 | Orchestration | LangGraph | State machines + persistence + human-in-loop |
 | Execution | LangChain | Mature tooling, wide integrations |
 | Multi-Agent | Agentic patterns | Specialized roles > generalist agents |
+| Long-Running | Harness design | Anthropic-validated pattern for persistence |
 
 ---
 
@@ -50,6 +55,8 @@
 - Single-framework absolutism
 - Agents without tool access
 - Complex goals without task decomposition
+- Long-running agents without harness infrastructure
+- Coupling reasoning and execution in the same loop
 
 ---
 
@@ -58,6 +65,7 @@
 - How to handle state across long-running agent sessions?
 - Best practices for multi-agent communication protocols?
 - When to use single agents vs multi-agent systems?
+- Optimal harness design for different task types?
 
 ---
 
@@ -65,6 +73,7 @@
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added harness design + brain/hands decoupling from Anthropic engineering. |
 | 2026-04-12 | Initial creation. Added AI architecture beliefs from @rohit4verse insights. |
 
 ---
