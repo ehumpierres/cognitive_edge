@@ -28,6 +28,18 @@
 
 **Friction kills agentic work.** The bottleneck isn't capability—it's interruption. Auto Mode (permission-by-policy) removes the interrupt tax. Every "Allow" click breaks flow.
 
+### On Knowledge Systems
+
+**LLMs compile knowledge, not just retrieve it.** Structure data as `raw/` (sources) → `wiki/` (compiled). The LLM transforms unstructured sources into interlinked, categorized knowledge. Human role: curate inputs, ask questions. LLM role: compile, maintain, enhance.
+
+**RAG is scale infrastructure, not a requirement.** At small scale (~100 articles, ~400K words), auto-maintained indexes beat vector search. LLMs are good at maintaining their own summaries and finding relevant context. Start simple.
+
+**Queries should add up.** File query outputs back into the knowledge base. Every exploration becomes a wiki enhancement. Knowledge compounds.
+
+**LLM linting keeps data healthy.** Run periodic "health checks" to find inconsistencies, impute missing data, discover connections, suggest new articles. The wiki is never static.
+
+**Build tools for both humans and LLMs.** Good tools have a human interface (web UI) AND an LLM interface (CLI). The LLM becomes an operator of your tooling.
+
 ### On Agentic Patterns
 
 **Parallel execution with coordination.** Agent Teams demonstrates the pattern: a lead agent delegates to parallel teammates via shared task list. The lead agent IS the harness.
@@ -58,6 +70,8 @@
 | Layer | Best-in-Class | Why |
 |-------|---------------|-----|
 | Model (Long Tasks) | Opus 4.6 | 14-hour task horizon enables persistent agents |
+| Knowledge Store | Markdown wiki | LLM-maintained, human-readable, version-controlled |
+| Knowledge IDE | Obsidian | View raw + compiled + outputs in one place |
 | Orchestration | LangGraph | State machines + persistence + human-in-loop |
 | Execution | LangChain | Mature tooling, wide integrations |
 | Multi-Agent | Agent Teams pattern | Lead agent + parallel teammates + shared task list |
@@ -77,6 +91,10 @@
 - Coupling reasoning and execution in the same loop
 - Permission prompts for every routine action (interrupt tax)
 - Models without extended task horizon for persistent work
+- Reaching for RAG before trying auto-maintained indexes
+- Manually editing LLM-maintained wikis
+- Treating knowledge bases as static (no linting/enhancement)
+- Building tools for only humans OR only LLMs, not both
 
 ---
 
@@ -88,6 +106,8 @@
 - Optimal harness design for different task types?
 - When is /loop preferable to event-driven triggers?
 - How to balance Auto Mode safety with necessary human oversight?
+- At what scale does RAG become necessary over auto-maintained indexes?
+- When to move knowledge from context windows to fine-tuned weights?
 
 ---
 
@@ -95,6 +115,7 @@
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added knowledge systems beliefs from Karpathy's LLM knowledge base pattern. |
 | 2026-04-12 | Added task horizon, /loop patterns, Auto Mode, Agent Teams from Aakash's Claude Q1 feature analysis. |
 | 2026-04-12 | Added harness design + brain/hands decoupling from Anthropic engineering. |
 | 2026-04-12 | Initial creation. Added AI architecture beliefs from @rohit4verse insights. |
