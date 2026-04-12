@@ -134,6 +134,12 @@
 
 **Restrict agent tools explicitly.** A security auditor agent doesn't need Write access. Define `tools: Read, Grep, Glob` in agent markdown frontmatter.
 
+**Passive context beats active retrieval.** AGENTS.md achieved 100% pass rate on Vercel evals; skills maxed at 79% with explicit triggers, 53% without (same as baseline). Skills weren't invoked 56% of the time. Why passive wins: no decision point ("should I look this up?"), consistent availability every turn, no ordering issues.
+
+**Compress docs to index + retrieval.** 8KB compressed index pointing to retrievable files achieved same 100% as full docs. Include instruction: "Prefer retrieval-led reasoning over pre-training-led reasoning."
+
+**Skills for vertical, AGENTS.md for horizontal.** Skills work for explicit action workflows ("upgrade Next.js"). AGENTS.md works for broad framework knowledge. They complement, but for general knowledge, passive context wins.
+
 ### On Agent Teams
 
 **One agent, one job.** A single agent with a massive prompt produces mediocre everything — context fills up, quality degrades. Specialized agents with clear roles excel. Give each agent a boring job title and a stop condition.
@@ -325,6 +331,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added AGENTS.md vs skills eval results: passive context (100%) beats active retrieval (79% max). Compress to index + retrieval. |
 | 2026-04-12 | Added autonomous agent team setup: one agent one job, file-based coordination, two-layer memory, corrective prompt-engineering, heartbeat self-healing. |
 | 2026-04-12 | Added vibe-coding security checklist: 20 ways AI-generated apps fail in production. AI optimizes for "works" not "works safely." |
 | 2026-04-12 | Added agent configuration beliefs from .claude/ folder anatomy: CLAUDE.md < 200 lines, hooks vs instructions, exit codes, path-scoped rules, skills vs commands. |
