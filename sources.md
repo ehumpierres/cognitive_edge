@@ -4,6 +4,7 @@ All processed URLs and their corresponding documents.
 
 | Date | Title | Source | Document |
 |------|-------|--------|----------|
+| 2026-04-12 | AGENTS.md vs Skills Evals | [Vercel Engineering](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals) | [agents-md-vs-skills-evals.md](ai/agents/agents-md-vs-skills-evals.md) |
 | 2026-04-12 | Autonomous AI Agent Team Setup | [@Saboo_Shubham_](https://x.com/Saboo_Shubham_) | [autonomous-agent-team-setup.md](ai/agents/autonomous-agent-team-setup.md) |
 | 2026-04-12 | Vibe Coding Security Checklist | [@Hartdrawss](https://x.com/Hartdrawss) | [vibe-coding-security-checklist.md](deployment/vibe-coding-security-checklist.md) |
 | 2026-04-12 | Anatomy of the .claude/ Folder | [@akshay_pachaar](https://x.com/akshay_pachaar) | [claude-folder-anatomy.md](ai/agents/claude-folder-anatomy.md) |
