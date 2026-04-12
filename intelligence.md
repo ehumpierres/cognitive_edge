@@ -65,11 +65,25 @@
 
 **Connectors abstract MCP.** 50+ one-click integrations without boilerplate.
 
-### On Building
-
-*[To be developed as more insights are collected]*
-
 ### On Deployment
+
+**Green CI ≠ proof of safety.** Passing CI is the agent's ability to persuade your pipeline, not proof the change is safe at scale. A query that scans every row, retry logic that thundering-herds, a cache with no TTL—all pass tests.
+
+**Implementation is abundant; judgment is scarce.** The inflection point: writing code is no longer the bottleneck. Knowing what's safe to ship is. All infrastructure must match this reality.
+
+**Leverage, don't rely.** Relying = agent + tests = ship it. Leveraging = using agents to iterate while maintaining ownership. Litmus test: would you own an incident from this PR?
+
+**Make the right thing easy to do.** Don't wrap development in red tape. Build closed-loop systems where agents act with high autonomy because environment is standardized, verification is easy, deployment is safe by default.
+
+**Self-driving deployments.** Gated pipelines, automatic rollback on canary degradation. No engineer babysitting dashboards. Problems caught, contained, reversed—in isolation, not globally.
+
+**Continuous validation.** Infrastructure tests itself continuously, not just at deploy. Load tests, chaos experiments, DR exercises. Systems hold up under pressure because they've been deliberately stressed.
+
+**Executable guardrails > documentation.** Encode operational knowledge as runnable tools. A `safe-rollout` skill wires flags, generates rollout plans with rollback conditions, specifies verification. Agents follow executable guardrails autonomously.
+
+**Separate generative from verification agents.** Read-only agents continuously verify system invariants. Specialized agents audit assumptions made by generative agents. Different agents for doing vs. checking.
+
+### On Building
 
 *[To be developed as more insights are collected]*
 
@@ -87,6 +101,8 @@
 | Session | Append-only event log | Durable, queryable, survives harness crashes |
 | Harness | Stateless orchestrator | Restartable via wake(sessionId), no state to lose |
 | Sandbox | Cattle containers | execute(name, input) → string, independently replaceable |
+| Deployment | Self-driving pipelines | Gated rollouts, auto-rollback, continuous validation |
+| Guardrails | Executable skills | Runnable tools > documentation |
 | Knowledge Store | Markdown wiki | LLM-maintained, human-readable, version-controlled |
 | Knowledge IDE | Obsidian | View raw + compiled + outputs in one place |
 | Orchestration | LangGraph | State machines + persistence + human-in-loop |
@@ -111,11 +127,17 @@
 - Manually editing LLM-maintained wikis
 - Treating knowledge bases as static (no linting/enhancement)
 - Building tools for only humans OR only LLMs, not both
-- **Coupling harness + sandbox in one container (creates pets)**
-- **Credentials accessible from untrusted code execution**
-- **Context window as only memory (irreversible losses)**
-- **Assuming resources live alongside harness**
-- **Provisioning containers before they're needed**
+- Coupling harness + sandbox in one container (creates pets)
+- Credentials accessible from untrusted code execution
+- Context window as only memory (irreversible losses)
+- Assuming resources live alongside harness
+- Provisioning containers before they're needed
+- **Assuming agent + passing tests = ready to ship**
+- **Shipping PRs you can't explain the production impact of**
+- **Operational knowledge trapped in documentation**
+- **Manual dashboard babysitting for deployments**
+- **Testing only at deploy time**
+- **Using same agents for generation and verification**
 
 ---
 
@@ -126,7 +148,7 @@
 - When to use single agents vs multi-agent systems?
 - ~~Optimal harness design for different task types?~~ → Virtualize components, make harness stateless
 - When is /loop preferable to event-driven triggers?
-- How to balance Auto Mode safety with necessary human oversight?
+- ~~How to balance Auto Mode safety with necessary human oversight?~~ → Self-driving deployments + executable guardrails
 - At what scale does RAG become necessary over auto-maintained indexes?
 - When to move knowledge from context windows to fine-tuned weights?
 
@@ -136,6 +158,7 @@
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added deployment beliefs from Vercel: green CI ≠ safety, leverage vs rely, self-driving deployments, executable guardrails, verification agents. |
 | 2026-04-12 | Added Managed Agents architecture: virtualization, cattle not pets, session model, credential isolation, lazy provisioning. |
 | 2026-04-12 | Added knowledge systems beliefs from Karpathy's LLM knowledge base pattern. |
 | 2026-04-12 | Added task horizon, /loop patterns, Auto Mode, Agent Teams from Aakash's Claude Q1 feature analysis. |
