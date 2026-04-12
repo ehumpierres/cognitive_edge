@@ -4,6 +4,7 @@ All processed URLs and their corresponding documents.
 
 | Date | Title | Source | Document |
 |------|-------|--------|----------|
+| 2026-04-12 | Vibe Coding Security Checklist | [@Hartdrawss](https://x.com/Hartdrawss) | [vibe-coding-security-checklist.md](deployment/vibe-coding-security-checklist.md) |
 | 2026-04-12 | Anatomy of the .claude/ Folder | [@akshay_pachaar](https://x.com/akshay_pachaar) | [claude-folder-anatomy.md](ai/agents/claude-folder-anatomy.md) |
 | 2026-04-12 | Ramp Glass: AI Coworker for Every Employee | [Seb Goddijn (Ramp)](https://x.com/sebgoddijn) | [ramp-glass-ai-coworker.md](ai/infrastructure/ramp-glass-ai-coworker.md) |
 | 2026-04-12 | Harness Memory Ownership | Harrison Chase (LangChain) | [harness-memory-ownership.md](ai/agents/harness-memory-ownership.md) |
