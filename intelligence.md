@@ -127,6 +127,17 @@
 
 **Connectors abstract MCP.** 50+ one-click integrations without boilerplate.
 
+**Autonomous research loops.** Give agents bounded scope (single file, single metric, fixed time budget) and explicit permission to run indefinitely. "NEVER STOP" is a valid instruction — don't ask if you should continue, think harder if stuck.
+
+**Bounded scope enables autonomy.** AutoResearch works because constraints are tight: one file to modify (train.py), one metric to optimize (val_bpb), fixed time budget (5 min). The constraints are what make autonomy tractable.
+
+**Simplicity as meta-heuristic.** Beyond raw metrics, instruct agents to prefer simplicity. "A 0.001 improvement that adds 20 lines of hacky code? Not worth it. A 0.001 improvement from deleting code? Definitely keep."
+
+**Git as experiment memory.** Use branches for experiment state (keep = advance, discard = reset). Never commit the experiment log (results.tsv) — it's untracked external memory. Agent references past experiments to avoid repeating failures.
+
+**program.md is a lightweight skill.** Setup phase → constraints → goal → loop → meta-rules. Human iterates on the skill file to find the "research org code" that achieves fastest progress.
+
+
 ### On Agent Configuration
 
 **CLAUDE.md < 200 lines.** Instruction adherence drops with length. Keep it focused: commands, architecture, conventions, gotchas. Don't duplicate what linters already enforce.
@@ -260,6 +271,8 @@
 - **Treating index files as tables of contents** (they're briefings with inline context)
 - **Hiring a genius with amnesia** (new chat, no context, every time)
 - **Reformatting instead of rethinking** (same content copy-pasted across platforms)
+- **Asking "should I continue?" in autonomous loops** (grant explicit permission to run indefinitely)
+- **Unbounded scope for autonomous agents** (single file + single metric + fixed time = tractable autonomy)
 
 ---
 
@@ -356,6 +369,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 | 2026-04-12 | Added knowledge systems beliefs from Karpathy's LLM knowledge base pattern. |
 | 2026-04-12 | Added task horizon, /loop patterns, Auto Mode, Agent Teams from Aakash's Claude Q1 feature analysis. |
 | 2026-04-12 | Added harness design + brain/hands decoupling from Anthropic engineering. |
+| 2026-04-12 | Added autonomous research loop patterns from Karpathy AutoResearch: NEVER STOP, bounded scope, simplicity heuristic, git as memory. |
 | 2026-04-12 | Added skill graph knowledge patterns: linked files = team, index as briefing, inline context, evolving graphs. |
 | 2026-04-12 | Initial creation. Added AI architecture beliefs from @rohit4verse insights. |
 
