@@ -79,6 +79,23 @@
 
 **Workspace > chat.** Real work isn't linear. Split panes, multiple sessions, documents alongside conversations. Layout persists across sessions.
 
+**Chat era → agent era.** Enterprises are moving from "let a thousand flowers bloom" experimentation to targeted automation applied to specific workflows. The interface isn't the product anymore; the automation is.
+
+**Change management is the real bottleneck.** Most workflows aren't set up to drop agents in. One pattern: head of AI in every business unit rolling up to a central team.
+
+**Tokenmaxxing: compute budgeting is strategic.** With strict OpEx budgets locked for the year, enterprises are having real trade-off discussions on token allocation. "Shark tank" for compute budget. Hierarchy of needs for use-case rationing.
+
+**Legacy systems block agent access.** Decades of on-prem or cloud-but-not-modernized systems. Agents can't tap in. Data access is the blocker, not model capability.
+
+**Agents = new capabilities, not job cuts.** Major use-cases are things companies couldn't do before: software upgrades, automating back-office blockers, processing documents for insights. More emphasis on making money vs. cutting costs.
+
+**Headless software is non-negotiable.** Enterprises will kick out vendors that don't make agent integration technically or economically easy. If your product doesn't have agent APIs, you'll be replaced.
+
+**Multi-agent interoperability is paramount.** No one wants to get locked into the wrong architecture. Companies realize they're in a multi-agent world — interoperability across systems matters more than picking the "best" agent.
+
+**Technical diffusion takes time.** Skills, MCP, CLIs may be simple for tech; they're esoteric in enterprise. Engineers won't be writing software, but they'll be setting up and operating the systems that automate work.
+
+
 ### On Agent Economy
 
 **Agents are becoming primary users.** The economy is being rebuilt with AI agents as the primary users, not humans. Every capability humans use to operate digitally needs an agent-native equivalent.
@@ -273,6 +290,10 @@
 - **Reformatting instead of rethinking** (same content copy-pasted across platforms)
 - **Asking "should I continue?" in autonomous loops** (grant explicit permission to run indefinitely)
 - **Unbounded scope for autonomous agents** (single file + single metric + fixed time = tractable autonomy)
+- **Pitching agents as job cutters** (enterprises want new capabilities, not headcount reduction)
+- **Assuming AI makes enterprise adoption easy** (Skills, MCP, CLIs are esoteric outside tech)
+- **Building software without agent APIs** (headless is non-negotiable; vendors get kicked out)
+- **Ignoring token economics** (tokenmaxxing is a board-level conversation)
 
 ---
 
@@ -369,6 +390,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 | 2026-04-12 | Added knowledge systems beliefs from Karpathy's LLM knowledge base pattern. |
 | 2026-04-12 | Added task horizon, /loop patterns, Auto Mode, Agent Teams from Aakash's Claude Q1 feature analysis. |
 | 2026-04-12 | Added harness design + brain/hands decoupling from Anthropic engineering. |
+| 2026-04-12 | Added enterprise ground-truth from Levie: tokenmaxxing, legacy systems, headless software, technical diffusion, agents = new capabilities not job cuts. |
 | 2026-04-12 | Added autonomous research loop patterns from Karpathy AutoResearch: NEVER STOP, bounded scope, simplicity heuristic, git as memory. |
 | 2026-04-12 | Added skill graph knowledge patterns: linked files = team, index as briefing, inline context, evolving graphs. |
 | 2026-04-12 | Initial creation. Added AI architecture beliefs from @rohit4verse insights. |
