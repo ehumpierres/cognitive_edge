@@ -134,6 +134,20 @@
 
 **Restrict agent tools explicitly.** A security auditor agent doesn't need Write access. Define `tools: Read, Grep, Glob` in agent markdown frontmatter.
 
+### On Agent Teams
+
+**One agent, one job.** A single agent with a massive prompt produces mediocre everything — context fills up, quality degrades. Specialized agents with clear roles excel. Give each agent a boring job title and a stop condition.
+
+**File-based coordination beats orchestration frameworks.** No API calls between agents. No message queues. Just files. One-writer, many-readers pattern. Dwight writes `DAILY-INTEL.md`, Kelly/Rachel/Pam read it. Files don't crash, don't need auth, don't rate limit.
+
+**Two-layer memory.** Daily logs (`memory/YYYY-MM-DD.md`) = raw notes. Long-term (`MEMORY.md`) = curated insights distilled from logs. Agents get better because context gets richer, not because models improve.
+
+**Corrective prompt-engineering.** First version is mediocre. Tenth is good. Thirtieth is great. Personality emerges from weeks of corrections stored in memory. TV character naming gives instant personality baseline.
+
+**Heartbeat self-healing.** Cron jobs fail. HEARTBEAT.md checks for stale jobs (>26 hours) and forces re-run. Self-healing, no human intervention.
+
+**The moat is the system, not the model.** Everyone has access to the same models. The alpha is the SOUL.md files, the memory, the scheduling, the weeks of corrective feedback. That system is yours.
+
 ### On Deployment
 
 **Green CI ≠ proof of safety.** Passing CI is the agent's ability to persuade your pipeline, not proof the change is safe at scale. A query that scans every row, retry logic that thundering-herds, a cache with no TTL—all pass tests.
@@ -311,6 +325,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 
 | Date | Update |
 |------|--------|
+| 2026-04-12 | Added autonomous agent team setup: one agent one job, file-based coordination, two-layer memory, corrective prompt-engineering, heartbeat self-healing. |
 | 2026-04-12 | Added vibe-coding security checklist: 20 ways AI-generated apps fail in production. AI optimizes for "works" not "works safely." |
 | 2026-04-12 | Added agent configuration beliefs from .claude/ folder anatomy: CLAUDE.md < 200 lines, hooks vs instructions, exit codes, path-scoped rules, skills vs commands. |
 | 2026-04-12 | Added enterprise adoption beliefs from Ramp Glass: raise floor not lower ceiling, product = enablement, skill marketplace, memory from connections, workspace > chat. Resolved enterprise rollout gap. |
