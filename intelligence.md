@@ -232,6 +232,16 @@
 
 ### On Agentic Patterns
 
+**4 patterns for multi-day autonomous work:**
+1. **Self-verification**: Agent must end-to-end verify everything itself. Design efficient testing layers it can loop on to prove correctness.
+2. **Spec documents**: Fully specify goals, implementation details, and verification criteria. Iterate multiple times before starting.
+3. **Running to-do list**: Visible, editable by both human and agent. Human steers by adding/reprioritizing without interrupting flow.
+4. **Adversarial review**: Fresh agent context reviews spec and implementation. Force loop until totally aligned. Key: invoke fresh context, not same session.
+
+**Externalize everything.** Spec = externalized goals. To-do = externalized state. Tests = externalized verification. Adversarial review = externalized critique. When everything is externalized, agents run indefinitely without losing context or accumulating drift.
+
+**Fresh context catches blind spots.** Same-session review has blind spots — the agent "knows" things it didn't write down. Fresh context catches gaps in documentation that the original agent can't see.
+
 **Parallel execution with coordination.** Agent Teams: lead agent + parallel teammates via shared task list. Lead agent IS the harness.
 
 **Scheduled persistence via /loop.** Long-running agents need repeating intervals:
@@ -473,6 +483,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 ## Changelog
 
 | Date | Update |
+| 2026-04-14 | Added long-running agent patterns: 4 patterns for 13+ day autonomous work (self-verification, spec docs, running to-do, adversarial review). Externalize everything. |
 | 2026-04-14 | Added organization as intelligence: Block model for replacing hierarchy with AI coordination, world models, capabilities vs products, three roles, no middle management. |
 | 2026-04-14 | Added multiplayer agents gap analysis: 4 missing primitives (shared memory, non-code versioning, provenance, permission scoping), open vs closed collaboration. |
 | 2026-04-14 | Added structured agent work patterns: 4 debugging rules, hypothesis-driven not brute-force. |

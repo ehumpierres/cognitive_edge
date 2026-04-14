@@ -28,3 +28,4 @@ All processed URLs and their corresponding documents.
 | 2026-04-14 | Enterprise AI Adoption Playbook: Ramp Model | [Geoff Charles (@geoffintech)](https://x.com/geoffintech) | [enterprise-ai-adoption-playbook.md](deployment/enterprise-ai-adoption-playbook.md) |
 | 2026-04-14 | Multiplayer Agents: The Collaboration Gap | [Melody Koh (@melodykoh)](https://x.com/melodykoh) | [multiplayer-agents.md](ai/infrastructure/multiplayer-agents.md) |
 | 2026-04-14 | From Hierarchy to Intelligence: The Block Model | [Sequoia Capital / Block](https://sequoiacap.com/article/from-hierarchy-to-intelligence/) | [hierarchy-to-intelligence.md](architecture/hierarchy-to-intelligence.md) |
+| 2026-04-14 | Long-Running Agent Patterns: 13 Days Straight | Practitioner notes | [long-running-agent-patterns.md](ai/agents/long-running-agent-patterns.md) |
