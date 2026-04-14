@@ -104,6 +104,31 @@
 
 ### On Multiplayer Agents
 
+### On Organization as Intelligence
+
+**Hierarchy exists because of information routing limits.** For 2000 years, from Roman legions to modern corporations, the constraint has been the same: a leader can effectively manage 3-8 people. More scale = more layers. More layers = slower information flow. Every organizational innovation has been working around this tradeoff.
+
+**AI can replace what hierarchy does.** Most companies give everyone a copilot — existing structure works slightly better. The alternative: build the company as an intelligence. Replace information routing with a world model that maintains context continuously.
+
+**Two world models power the intelligence:**
+1. **Company world model**: How the organization understands itself — what's being built, what's blocked, where resources are, what's working. Replaces information that used to flow through management layers.
+2. **Customer world model**: Per-customer understanding built from honest signal (transactions, behavior, outcomes). The richer the signal, the better the model. The better the model, the more transactions. Flywheel.
+
+**Build capabilities, not products.** Atomic primitives (payments, lending, identity, etc.) with no UIs of their own. The intelligence layer composes them into solutions for specific customers at specific moments, delivered proactively. No product manager decides what to build — customer reality generates the backlog.
+
+**The roadmap is inverted.** When the intelligence layer tries to compose a solution and can't because a capability doesn't exist, that failure signal IS the roadmap. Customer reality generates the backlog directly.
+
+**People move to the edge.** Traditional: intelligence spread throughout people, hierarchy routes it. New model: intelligence lives in the system, people are on the edge. The edge is where intelligence makes contact with reality — sensing things the model can't perceive, making calls it shouldn't make alone.
+
+**Three roles replace hierarchy:**
+1. **Individual Contributors**: Deep specialists. World model provides context, they make decisions without waiting to be told.
+2. **Directly Responsible Individuals (DRIs)**: Own cross-cutting problems/outcomes with full authority to pull resources. Time-boxed, not permanent.
+3. **Player-coaches**: Build + develop people. No pure management. World model handles alignment, DRI handles strategy, player-coach handles craft and people.
+
+**No permanent middle management.** Status meetings, alignment sessions, priority negotiations — the system handles these. Everyone's role is closer to work and customer.
+
+**The strategic question:** What does your company understand that is genuinely hard to understand, and is that understanding getting deeper every day? If nothing, AI is just cost optimization. If deep, AI reveals what your company actually is.
+
 **Single-player is solved; multiplayer isn't.** AI agents (Claude Code, Cowork) accidentally became the operating system for knowledge work. But they were built for engineers working alone. The collaboration layer doesn't exist.
 
 **4 missing primitives for multiplayer:**
@@ -448,6 +473,7 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 ## Changelog
 
 | Date | Update |
+| 2026-04-14 | Added organization as intelligence: Block model for replacing hierarchy with AI coordination, world models, capabilities vs products, three roles, no middle management. |
 | 2026-04-14 | Added multiplayer agents gap analysis: 4 missing primitives (shared memory, non-code versioning, provenance, permission scoping), open vs closed collaboration. |
 | 2026-04-14 | Added structured agent work patterns: 4 debugging rules, hypothesis-driven not brute-force. |
 | 2026-04-14 | Added context & memory architecture: computation box model, signal vs noise, bitter lesson applied to context, memory retrieval patterns, lifecycle hooks. |
