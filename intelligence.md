@@ -45,6 +45,78 @@
 **Many brains, many hands.** Decoupling enables horizontal scale. Stateless harnesses connect to sandboxes only when needed. Brains can pass hands to one another.
 
 ### On Memory & Ownership
+### On Context & Memory Architecture
+
+**Context window = computation box.** The model only reasons over what's inside it. Everything else (tools, skills, hooks, system prompts, memory) lives as external context that the harness must retrieve, shape, and inject as fragments.
+
+**Signal vs noise in fragments.** Targeted fragments = signal → better computation. Conflicting/stale fragments = noise → model gets confused. The job isn't to dump everything in; it's to inject only what's relevant.
+
+**The bitter lesson applied to context.** Scale + search wins. As experiential memory accumulates, the bottleneck shifts from "store it" to "reliably retrieve and inject the right fragment." Same lesson that ate every other AI subfield is coming for context.
+
+**Memory retrieval architecture.** The pattern that works:
+1. Background observer captures tool usage in real time
+2. Semantic summaries generated from observations  
+3. Storage in SQLite + vector store (Chroma)
+4. Injection of only relevant observations at session start
+5. Lightweight index first, fetch depth on demand
+
+**5 lifecycle hooks for memory:** SessionStart (load memories), UserPromptSubmit (capture intent), PostToolUse (capture observations), Summary (generate semantic summaries), SessionEnd (persist new memories).
+
+**Auto-compaction is lossy.** Context windows auto-compact at ~95% capacity. That compaction destroys early instructions, corrections, and learned patterns. External memory that survives compaction is essential infrastructure.
+
+**Write evidence to files.** During debugging or research, externalize reasoning to persistent files. This survives context compression and creates retrievable signal. "Write all assumptions and evidence to DEBUG.md" — one instruction that 1000x's debugging efficiency.
+
+### On Structured Agent Work
+
+**4 rules for AI debugging:**
+1. List hypotheses before changing code — forces structured thinking
+2. Maximum 5 lines per experiment — small surface area = clear signal
+3. Write all evidence to files — survives context compression
+4. Fail twice in same direction → force switch — prevents perseverating on dead ends
+
+**Hypothesis-driven, not brute-force.** Tokens wasted on brute-forcing can be 1000x more than structured approaches. The agent that writes hypotheses to a file and systematically tests them beats the agent that just tries things.
+
+### On Enterprise AI Transformation
+
+**AI proficiency levels:**
+| Level | Description | Expectation |
+|-------|-------------|-------------|
+| L0 | Sometimes uses ChatGPT. No workflow changes. | *Will not survive* |
+| L1 | Built custom GPTs, dabbled in Claude Code. | Starting point |
+| L2 | Built an app that automates part of their job. | *Where things get real* |
+| L3 | Systems builders who level up everyone else. | Force multipliers |
+
+**Get everyone up the ladder.** Build tools that meet people where they are (L0→L1). Raise expectations as tools mature (L1→L2). Match the mandate to the tooling.
+
+**Creative destruction is the norm.** Tools shipped in January are obsolete by April. Shelf life of weeks, not months. If your internal tools from three months ago still feel state-of-the-art, you're not moving boldly enough.
+
+**Build from center, drive from spokes.** Central team builds platforms/connectors/plumbing. Functional teams build on top and give feedback. Neither fully centralized nor fully decentralized — both.
+
+**Stage > mandate.** Mandates decay. Culture remains. Create venues: Slack channels, office hours, all-hands demos. Make early converts visible. The competitive dynamic does more than any memo.
+
+**Leaderboards create accountability.** Track sessions, skills used, apps shipped. Three dynamics: healthy peer pressure, manager accountability, discovery through emulation.
+
+**Remove every constraint.** Unlimited AI budget (learning investment, not procurement). No token limits. Pre-connected tools. Kill IT bottlenecks on connectors.
+
+**The cost math:** If someone is 2x more productive with AI, you should be willing to spend their entire salary again in tokens. Token consumption per employee is nowhere near double-digit percentages of salary.
+
+**AI in hiring is mandatory.** Absolute requirement for AI proficiency. PM candidates must build working prototypes in interviews.
+
+### On Multiplayer Agents
+
+**Single-player is solved; multiplayer isn't.** AI agents (Claude Code, Cowork) accidentally became the operating system for knowledge work. But they were built for engineers working alone. The collaboration layer doesn't exist.
+
+**4 missing primitives for multiplayer:**
+1. **Shared agent memory** — No team-level memory. Each agent accumulates context independently.
+2. **Non-code versioning** — Document collaboration shouldn't require branch management.
+3. **Agent provenance** — When humans and agents contribute, you need to know who wrote what.
+4. **Permission scoping** — Control what context crosses into shared space vs stays private.
+
+**The workarounds ARE the spec.** Non-engineers using GitHub for markdown files. Copy-paste between terminals and Google Docs. Teaching colleagues what "commit" means. Every workaround reveals what's missing.
+
+**Open vs closed collaboration.** If labs solve collaboration inside closed products, your team's shared context moves inside their infrastructure. The gravity shifts from your ownership to theirs. There's room for an independent layer regardless.
+
+**Multiplayer is the moat.** Single-player = Claude eats your lunch. Multiplayer = orchestration, governance, shared memory across humans + agents. No single model owns that.
 
 **Memory isn't a plugin — it's the harness.** Managing context IS managing memory. The harness decides: how is AGENTS.md loaded? What survives compaction? Are interactions queryable? How is memory metadata presented? You can't separate memory from harness.
 
@@ -376,6 +448,10 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 ## Changelog
 
 | Date | Update |
+| 2026-04-14 | Added multiplayer agents gap analysis: 4 missing primitives (shared memory, non-code versioning, provenance, permission scoping), open vs closed collaboration. |
+| 2026-04-14 | Added structured agent work patterns: 4 debugging rules, hypothesis-driven not brute-force. |
+| 2026-04-14 | Added context & memory architecture: computation box model, signal vs noise, bitter lesson applied to context, memory retrieval patterns, lifecycle hooks. |
+| 2026-04-14 | Expanded enterprise adoption: AI proficiency levels (L0-L3), creative destruction, center+spokes org design, leaderboards, cost math for tokens. |
 |------|--------|
 | 2026-04-12 | Added AGENTS.md vs skills eval results: passive context (100%) beats active retrieval (79% max). Compress to index + retrieval. |
 | 2026-04-12 | Added autonomous agent team setup: one agent one job, file-based coordination, two-layer memory, corrective prompt-engineering, heartbeat self-healing. |
@@ -397,4 +473,4 @@ Enterprise adoption of agentic systems requires capabilities we don't yet have s
 
 ---
 
-*Last updated: 2026-04-12*
+*Last updated: 2026-04-14*

@@ -21,3 +21,9 @@ All processed URLs and their corresponding documents.
 | 2026-04-12 | AutoResearch: Autonomous AI Research Agents | [Karpathy](https://github.com/karpathy/autoresearch) | [karpathy-autoresearch-loop.md](ai/agents/karpathy-autoresearch-loop.md) |
 | 2026-04-12 | 🔑 Anthropic Claude Cookbooks | [Anthropic](https://github.com/anthropics/claude-cookbooks) | [anthropic-claude-cookbooks.md](reference/anthropic-claude-cookbooks.md) |
 | 2026-04-12 | Enterprise Agent Adoption Field Report | [Aaron Levie (Box)](https://x.com/levie) | [levie-enterprise-agent-adoption.md](ai/infrastructure/levie-enterprise-agent-adoption.md) |
+| 2026-04-14 | Harness Architecture: Context Fragments & Bitter Lesson | [Harness Engineering / Vivek](https://x.com/vivek) | [harness-architecture.md](ai/infrastructure/harness-architecture.md) |
+| 2026-04-14 | AI Agent Debugging Methodology: 4 Rules | Practitioner (inspired by Karpathy) | [debugging-methodology.md](ai/agents/debugging-methodology.md) |
+| 2026-04-14 | claude-mem: Memory Plugin Architecture | [Alex Newman](https://github.com/anthropics/claude-mem) | [claude-mem-architecture.md](reference/claude-mem-architecture.md) |
+| 2026-04-14 | Agent Operator Role: New Enterprise Function | Enterprise AI observations | [agent-operator-role.md](ai/agents/agent-operator-role.md) |
+| 2026-04-14 | Enterprise AI Adoption Playbook: Ramp Model | [Geoff Charles (@geoffintech)](https://x.com/geoffintech) | [enterprise-ai-adoption-playbook.md](deployment/enterprise-ai-adoption-playbook.md) |
+| 2026-04-14 | Multiplayer Agents: The Collaboration Gap | [Melody Koh (@melodykoh)](https://x.com/melodykoh) | [multiplayer-agents.md](ai/infrastructure/multiplayer-agents.md) |
